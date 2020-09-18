@@ -1,7 +1,8 @@
 <template>
-  <div id="header">
+  <div>
     <TaskbarInfo />
     <Taskbar />
+    <GridDisplayImg />
   </div>
 </template>
 
