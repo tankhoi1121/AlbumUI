@@ -22,6 +22,7 @@
 </style>
 <script>
 import axios from "axios";
+var imgData = [];
 export default {
   data() {
     return {
@@ -29,9 +30,20 @@ export default {
     };
   },
   async fetch() {
-    const { imgData } = await axios.get("http://localhost:5000/api/album/");
+    let config = {
+      method: "GET",
+      url: "https://localhost:5001/api/album",
+      headers: {
+        "Access-Control-Request-Headers": "*",
+      },
+    };
+
+    await axios.request(config).then((res) => {
+      imgData = res.data;
+    });
+
     if ({ imgData } !== null) {
-      console(imgData);
+      console.log(imgData);
     } else {
       console.log("Not loaded data");
     }
@@ -45,7 +57,7 @@ export default {
           console.log("Detected Element");
           var data = ["", "", "", "", "", ""];
 
-          data.forEach((element) => {
+          imgData.forEach((element) => {
             ///Div col: _albumFrame
             var col = document.createElement("div");
             col.className = "col-md-4";
@@ -59,7 +71,7 @@ export default {
             /// img: card
             var img = document.createElement("img");
             img.className = "card-img-top";
-            img.src = "#";
+            img.src = element;
             card.appendChild(img);
 
             /// Div cardBody: card
