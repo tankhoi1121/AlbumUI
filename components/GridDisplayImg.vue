@@ -21,15 +21,21 @@
 }
 </style>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       message: "Welcome to the world of atractive magic",
-      imgData: [],
     };
   },
   async fetch() {
-    this.imgData = await this.$http.$get("https://localhost:5001/");
+    const { imgData } = await axios.get("http://localhost:5000/api/album/");
+    if ({ imgData } !== null) {
+      console(imgData);
+    } else {
+      console.log("Not loaded data");
+    }
+    return imgData;
   },
   computed: {
     LoadingData: function () {
@@ -38,6 +44,7 @@ export default {
         if (_albumFrame != null) {
           console.log("Detected Element");
           var data = ["", "", "", "", "", ""];
+
           data.forEach((element) => {
             ///Div col: _albumFrame
             var col = document.createElement("div");
