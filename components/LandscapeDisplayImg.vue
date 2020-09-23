@@ -1,15 +1,9 @@
 <template>
   <main role="main">
-    <!-- <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">My Album</h1>
-        <p class="lead text-muted">{{message}}</p>
-      </div>
-    </section>-->
     <CategoryBar />
     <div class="bg-light py-5">
       <div class="container">
-        <div class="row" ref="AlbumFrame">{{LoadingData}}</div>
+        <div class="row" ref="LandscapeFrame">{{LoadingData}}</div>
       </div>
     </div>
   </main>
@@ -33,7 +27,7 @@ export default {
   async fetch() {
     let config = {
       method: "GET",
-      url: "https://localhost:5001/api/album",
+      url: "https://localhost:5001/api/album/landscape",
       headers: {
         "Access-Control-Request-Headers": "*",
       },
@@ -47,7 +41,7 @@ export default {
   computed: {
     LoadingData: function () {
       setTimeout(() => {
-        var _albumFrame = this.$refs.AlbumFrame;
+        var _albumFrame = this.$refs.LandscapeFrame;
         if (_albumFrame != null) {
           console.log("Detected Element");
           var data = ["", "", "", "", "", ""];
