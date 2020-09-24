@@ -3,7 +3,7 @@
     <CategoryBar />
     <div class="bg-light py-5">
       <div class="container">
-        <div class="row" ref="LandscapeFrame">{{LoadingData}}</div>
+        <div class="row" ref="LandscapeFrame">{{ LoadingData }}</div>
       </div>
     </div>
   </main>
@@ -33,6 +33,10 @@ export default {
       },
     };
     await axios.request(config).then((res) => {
+      var prefix = "https://localhost:5001/";
+      for (let i = 0; i < res.data.length; i++) {
+        res.data[i] = prefix + res.data[i];
+      }
       imgData = res.data;
     });
     // console.log(imgData);
