@@ -78,7 +78,7 @@ export default {
             cardBody.className = "card-body";
             var paragraph = document.createElement("p");
             paragraph.className = "card-text";
-            paragraph.innerText = "Khoi Nguyen Tan";
+            paragraph.innerText = "unsplash";
             cardBody.appendChild(paragraph);
             card.appendChild(cardBody);
           });
