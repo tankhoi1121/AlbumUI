@@ -61,6 +61,10 @@ export default {
   ],
   axios: {
     // proxyHeaders: false
+    proxy: true,
+  },
+  proxy: {
+    '/api/': { target: 'http://localhost:5000/api', pathRewrite: { '^/api/': '' } }
   },
   /*
   ** Build configuration
